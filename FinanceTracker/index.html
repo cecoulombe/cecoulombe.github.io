@@ -156,46 +156,64 @@
             input.addEventListener("input", updateTotal);
         });
 
-        // need to set the fromCurrency before its changed
-        let fromCurrency = "";
-        document.getElementById("currency").addEventListener("click", function() {
-            fromCurrency = document.getElementById("currency").value;
-        })
+       // Initialize with the current value of the dropdown
+        let fromCurrency = document.getElementById("currency").value;
 
-        // update the values with currency change
-        document.getElementById("currency").addEventListener("change", function(){
-            let rate = "";
-            const amountsA = document.querySelectorAll(".amountA");
-            const amountsL = document.querySelectorAll(".amountL");
-            const targetCurrency = document.getEleemntById("currency").value;
+        document.getElementById("currency").addEventListener("change", function() {
+            // Get the new selected currency value
+            const targetCurrency = document.getElementById("currency").value;
+
+            // Log the current state for debugging
+            console.log("From Currency:", fromCurrency);
+            console.log("Target Currency:", targetCurrency);
+
             const apiKey = "26716265cb570afd57f0af33";
-            const apiURL = "https://v6.exchangerate-api.com/v6/26716265cb570afd57f0af33/latest/${fromCurrency}"
+            const apiURL = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${fromCurrency}`;
+
             fetch(apiURL)
-                .then(response => response.json())
-                .then(data => {
-                    rate = data.rates[targetCurrency];
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
                 })
-                .catch(error => console.error("Error: ", error));
+                .then(data => {
+                    // Log API response data
+                    console.log("API Response Data:", data);
 
-            amountsA.forEach(function(input)
-            {
-                input.value = input.value * rate;
-            });
-            amountsL.forEach(function(input)
-            {
-                input.value = input.value * rate;
-            });
+                    // Ensure the target currency exists in the rates data
+                    if (data.conversion_rates  && data.conversion_rates[targetCurrency]) {
+                        const rate = data.conversion_rates[targetCurrency];
+                        console.log(`Conversion rate from ${fromCurrency} to ${targetCurrency}: ${rate}`);
 
-            // set apiURL and the targetCurrency
-            // get the rate from the json file
-            // get the conversion factor
-            // for each amountA and amountL
-                // the new amount is the old amount times by the rate
-            // catch errors
+                        const amountsA = document.querySelectorAll(".amountA");
+                        const amountsL = document.querySelectorAll(".amountL");
+
+                        // Convert assets
+                        amountsA.forEach(function(input) {
+                            input.value = (parseFloat(input.value) * rate).toFixed(2);
+                        });
+
+                        // Convert liabilities
+                        amountsL.forEach(function(input) {
+                            input.value = (parseFloat(input.value) * rate).toFixed(2);
+                        });
+
+                        // Update the total after conversion
+                        updateTotal();
+                    } else {
+                        console.error("Currency conversion rate not available for target currency: " + targetCurrency);
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching exchange rate:", error);
+                });
+
+            // Update fromCurrency to the newly selected targetCurrency
+            fromCurrency = targetCurrency;
+        });
 
 
-            updateTotal();
-        })
         
         // supress all default actions for events
         document.querySelectorAll("#assetForm, #liabilityForm").forEach(form => {
