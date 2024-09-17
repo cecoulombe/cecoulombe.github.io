@@ -156,7 +156,44 @@
             input.addEventListener("input", updateTotal);
         });
 
+        // need to set the fromCurrency before its changed
+        let fromCurrency = "";
+        document.getElementById("currency").addEventListener("click", function() {
+            fromCurrency = document.getElementById("currency").value;
+        })
+
+        // update the values with currency change
         document.getElementById("currency").addEventListener("change", function(){
+            let rate = "";
+            const amountsA = document.querySelectorAll(".amountA");
+            const amountsL = document.querySelectorAll(".amountL");
+            const targetCurrency = document.getEleemntById("currency").value;
+            const apiKey = "26716265cb570afd57f0af33";
+            const apiURL = "https://v6.exchangerate-api.com/v6/26716265cb570afd57f0af33/latest/${fromCurrency}"
+            fetch(apiURL)
+                .then(response => response.json())
+                .then(data => {
+                    rate = data.rates[targetCurrency];
+                })
+                .catch(error => console.error("Error: ", error));
+
+            amountsA.forEach(function(input)
+            {
+                input.value = input.value * rate;
+            });
+            amountsL.forEach(function(input)
+            {
+                input.value = input.value * rate;
+            });
+
+            // set apiURL and the targetCurrency
+            // get the rate from the json file
+            // get the conversion factor
+            // for each amountA and amountL
+                // the new amount is the old amount times by the rate
+            // catch errors
+
+
             updateTotal();
         })
         
@@ -166,8 +203,6 @@
                 event.preventDefault(); // stops the form submission
             })
         })
-
-   
 
         // handle addAssets
         document.getElementById("addAsset").addEventListener("click", function(){
