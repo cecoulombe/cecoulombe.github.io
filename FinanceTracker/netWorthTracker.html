@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- supports most global charsets -->
+        <meta charset="UTF-8">
+        <!-- supports proper formatting for mobile -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- webpage title -->
+        <title>Net Worth Tracker</title>
+        <!-- CSS styles for formatting -->
+        <style>
+            .topRight {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            table{
+                width: 100%;
+                border-collapse: collapse;
+            }
+            td{
+                border: 1px solid #FFF;
+                padding: 1px;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                vertical-align: top;
+
+            }
+        </style>
+    </head>
+    <!-- contains all of the displayed information on the webpage -->
+    <body>
+        <h1>Net Worth Calculator</h1>
+        <!-- create a drop down menu for currency -->
+        <select name = "currency" id = "currency" class="topRight">
+            <option value="CAD">Canadian Dollar (CAD)</option>
+            <option value="USD">US Dollar (USD)</option>
+            <option value="EUR">Euro (EUR)</option>
+            <option value="TRY">Turkish Lira (TRY)</option>
+           <!-- add more options one it has been implemented -->
+           <!-- for each currency in the list (from assignment): You must call either an external 
+           service, or one you create yourself, separate from your core application service. 
+           (so don't do it in the JS section) -->
+        </select>
+        <p>Fill out the tables below with your assets and liabilities to calculate your net worth.</p>
+        <!-- create an outer table so that all of the other tables can be next to eachother -->
+        <table>
+            <tr>
+                <td>
+                    <!-- table 1 - assets -->
+                     <form id = "assetForm">
+                        <table id = "assetTable">
+                            <tr>
+                                <th>Asset</th>
+                                <th>Amount</th>
+                            </tr>
+                            <tr>
+                                <td><input type = "Text" placeholder="Savings"></td>
+                                <td><input type = "number" placeholder="0.00" step = "0.01"  class = "amountA"></td>
+                            </tr>
+                            <tr>
+                                <td><input type = "Text" placeholder="Real Estate"></td>
+                                <td><input type = "number" placeholder="0.00" step = "0.01" class = "amountA"></td>
+                            </tr>
+                            <tr>
+                                <td><input type = "Text" placeholder="Other"></td>
+                                <td><input type = "number" placeholder="0.00" step = "0.01" class = "amountA"></td>
+                            </tr>
+                        </table>
+                        <button type = "button" id = "addAsset">Add Asset</button>
+                    </form>
+                </td>
+                <td>
+                    <p>Assets may include: saved money, real estate, &c.</p>
+                </td>
+                <td>
+                    <!-- table 2 - liabilities -->
+                    <form id = "liabilityForm">
+                        <table id = "liabilityTable">
+                            <tr>
+                                <th>Liabilities</th>
+                                <th>Amount</th>
+                            </tr>
+                            <tr>
+                                <td><input type = "Text" placeholder="Debt"></td>
+                                <td><input type = "number" placeholder="0.00" step = "0.01" class = "amountL"></td>
+                            </tr>
+                            <tr>
+                                <td><input type = "Text" placeholder="Mortgage"></td>
+                                <td><input type = "number" placeholder="0.00" step = "0.01" class = "amountL"></td>
+                            </tr>
+                            <tr>
+                                <td><input type = "Text" placeholder="Other"></td>
+                                <td><input type = "number" placeholder="0.00" step = "0.01" class = "amountL"></td>
+                            </tr>
+                        </table>
+                        <button type = "button" id = "addLiability">Add Liability</button>
+                     </form>
+                </td>
+                <td>
+                    <p>Liabilities may include: debt, loans, mortgage, &c.</p>
+                </td>
+            </tr>
+        </table>
+        <h2 id = "totalAmount">Net worth: 0.00</h2>
+    </body>
+    <script>
+        // update the total net worth
+        function updateTotal()
+        {
+            // assets
+            const amountsA = document.querySelectorAll(".amountA");
+            let totalAmount = 0;
+
+            amountsA.forEach(function(input)
+            {
+                const value = parseFloat(input.value) || 0  // will either take the value or convert it to 0 if 
+                totalAmount += value;
+            });
+
+            // liabilities
+            const amountsL = document.querySelectorAll(".amountL");
+
+            amountsL.forEach(function(input)
+            {
+                const value = parseFloat(input.value) || 0  // will either take the value or convert it to 0 if 
+                totalAmount -= value;
+            });
+
+            // get the current units being used
+            const selectedCurrency = document.getElementById('currency').value;
+            let currencySymbol;
+            switch(selectedCurrency){
+                case "CAD":
+                    currencySymbol = "$"
+                    break;
+                case "USD":
+                    currencySymbol = "$"
+                    break;
+                case "EUR":
+                    currencySymbol = "€"
+                    break;
+                case "TRY":
+                    currencySymbol = "₺"
+                    break;
+                default:
+                    currencySymbol = selectedCurrency;
+            }
+
+            // update the displayed value
+            document.getElementById('totalAmount').innerText = "Net worth: " + totalAmount.toFixed(2) + currencySymbol;
+        }
+
+        // add listeners to all existing elements
+        document.querySelectorAll(".amountA, .amountL").forEach(input => {
+            input.addEventListener("input", updateTotal);
+        });
+
+        document.getElementById("currency").addEventListener("change", function(){
+            updateTotal();
+        })
+        
+        // supress all default actions for events
+        document.querySelectorAll("#assetForm, #liabilityForm").forEach(form => {
+            form.addEventListener("submit", function(event) {
+                event.preventDefault(); // stops the form submission
+            })
+        })
+
+   
+
+        // handle addAssets
+        document.getElementById("addAsset").addEventListener("click", function(){
+            // get the table elements
+            const table = document.getElementById("assetTable")
+            // insert a new row
+            const newRow = table.insertRow();
+            // insert the columns in the row
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+            // add html elements to each cell
+            cell1.innerHTML = '<input type = "text" placeholder = "New Asset">';
+            cell2.innerHTML = '<input type = "number" placeholder = "0.00" step = "0.01" class = "amountA">';
+            // add event listeners to the new elements
+            const newAmountInput = cell2.children[0];
+            newAmountInput.addEventListener("input", updateTotal);
+        })        
+
+        // handle addLiability
+        document.getElementById("addLiability").addEventListener("click", function(){
+            // get the table elements
+            const table = document.getElementById("liabilityTable")
+            // insert a new row
+            const newRow = table.insertRow();
+            // insert the columns in the row
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+            // add html elements to each cell
+            cell1.innerHTML = '<input type = "text" placeholder = "New Liability">';
+            cell2.innerHTML = '<input type = "number" placeholder = "0.00" step = "0.01" class = "amountL">';
+            // add event listeners to the new elements
+            const newAmountInput = cell2.children[0];
+            newAmountInput.addEventListener("input", updateTotal);
+        })     
+    </script>
+</html>
