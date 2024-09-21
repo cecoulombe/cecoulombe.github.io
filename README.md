@@ -1,6 +1,6 @@
 # My Project
 
-This is the main project repository. It includes both the codebase and the website hosted at [https://username.github.io/repository-name](https://username.github.io/repository-name).
+This is the main project repository. It includes both the codebase and the website hosted at [https://cecoulombe.github.io/FinanceTracker](https://cecoulombe.github.io/FinanceTracker).
 
 ## Contents
 - [Main Project](#main-project)
