@@ -6,11 +6,12 @@ This README file is specifically for the Finance Trakcer website hosted through 
 
 ## To-Do List for Website
 
-- [ ] Convert implementation from Javascript to React
-  - [ ] Implement MVC via React
-- [ ] Add input validation to ensure input is numerical
+- [ ] Convert implementation from Javascript to React.
+  - [ ] Implement MVC via React.
+- [ ] Add input validation to ensure input is numerical.
+- [ ] Protect user input so that it persists when the page is reloaded.
 - [ ] Create an API that calls out to the third party conversion rates site so that it is not done directly through the web application.
-- [ ] Learn AWS so that it can be used to host the site
+- [ ] Learn AWS so that it can be used to host the site.
 
 ## Website Updates
 
