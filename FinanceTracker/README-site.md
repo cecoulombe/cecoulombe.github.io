@@ -3,11 +3,11 @@
 This README file is specifically for the Finance Tracker website hosted through GitHub.io.
 
 ## Contents
-- [Current Version Instructions](#Instructions)
+- [Access to the Current Version](#Access-Instructions)
 - [TODO List](#To-Do-List-for-Website)
 - [Version History](#Version-History)
 
-## Redirect Instructions
+##Access-Instructions
 This is no longer the most up to date version of the webpage. It is now being hosted through GitHub Pages and is being stored in [here](https://github.com/cecoulombe/FinanceTracker)
 
 ## To-Do List for Website
