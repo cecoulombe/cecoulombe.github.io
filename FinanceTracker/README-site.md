@@ -2,8 +2,6 @@
 
 This README file is specifically for the Finance Trakcer website hosted through GitHub Pages.
 
-[Go to Website](https://username.github.io/repository-name)
-
 ## To-Do List for Website
 
 - [x] Convert implementation from Javascript to React.
@@ -15,4 +13,6 @@ This README file is specifically for the Finance Trakcer website hosted through 
 
 ## Website Updates
 
-- **v1.0**: Initial launch of the website with basic features written in Javascript.
+- **v1.0**: Initial launch of the website with basic features written in Javascript and HTML.
+  - [Link to the Webpage](https://cecoulombe.github.io/FinanceTracker/tracker_HTML)
+- **v1.1**: Website redesigned and implemented using React.
