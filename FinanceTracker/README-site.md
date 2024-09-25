@@ -2,6 +2,12 @@
 
 This README file is specifically for the Finance Trakcer website hosted through GitHub Pages.
 
+## Contents
+- [Current Version Instructions](#mInstructions)
+
+## Instructions
+To access the [most up to date version](#mWebsite Update) of the webpage
+
 ## To-Do List for Website
 
 - [x] Convert implementation from Javascript to React.
