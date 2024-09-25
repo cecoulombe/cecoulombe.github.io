@@ -7,5 +7,4 @@ This is the main project repository. It includes links to the evolving versions 
 
 ## Finance Tracker
 An early version finance application. Currently has the functionality to determine the user's net worth based on input and can change the currency the values are represented in.
--  [Tracker Directory] (./FinanceTracker)
 -  [Webpage Documentation](./FinanceTracker/README-site.md)
