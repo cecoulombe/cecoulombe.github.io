@@ -2,6 +2,7 @@
   "name": "tracker_react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://cecoulombe.github.io/FinanceTracker",
   "dependencies": {
     "@babel/core": "^7.16.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
@@ -57,7 +58,6 @@
     "webpack-manifest-plugin": "^4.0.2",
     "workbox-webpack-plugin": "^6.4.1"
   },
-  "homepage": "https://cecoulombe.github.io/FinanceTracker/tracker_React/",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
