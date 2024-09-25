@@ -3,9 +3,9 @@
 This README file is specifically for the Finance Trakcer website hosted through GitHub Pages.
 
 ## Contents
-- [Current Version Instructions](#mInstructions)
-- [TODO List](##To-Do-List-for-Website)
-- [Version History](#mVersion-History)
+- [Current Version Instructions](#Instructions)
+- [TODO List](#To-Do-List-for-Website)
+- [Version History](#Version-History)
 
 ## Instructions
 To access the most up to date version of the webpage
