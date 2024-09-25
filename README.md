@@ -1,7 +1,7 @@
 # cecoulombe.github.io
 
 This is the main project repository. It currently only hosts the outdated HTML/Jvascript version of the Finance Tracker webpage. 
-- The most up-to-date version of the project, which was rewritten using React, which you can read more about [here](https://github.com/cecoulombe/FinanceTracker)
+- The most up-to-date version of the project, which was rewritten using React, is available [here](https://github.com/cecoulombe/FinanceTracker)
 
 ## Contents
 - [HTML/JS Finance Tracker](#FinanceTracker)
