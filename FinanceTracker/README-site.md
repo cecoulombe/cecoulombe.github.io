@@ -1,6 +1,6 @@
 # Website Documentation
 
-This README file is specifically for the Finance Trakcer website hosted through GitHub.io.
+This README file is specifically for the Finance Tracker website hosted through GitHub.io.
 
 ## Contents
 - [Current Version Instructions](#Instructions)
