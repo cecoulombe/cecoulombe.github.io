@@ -4,37 +4,8 @@ This README file is specifically for the Finance Trakcer website hosted through 
 
 ## Contents
 - [Current Version Instructions](#mInstructions)
-- [TODO List](##To-Do List for Website)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- [TODO List](##To-Do-List-for-Website)
+- [Version History](#mVersion-History)
 
 ## Instructions
 To access the most up to date version of the webpage
@@ -48,7 +19,7 @@ To access the most up to date version of the webpage
 - [ ] Create an API that calls out to the third party conversion rates site so that it is not done directly through the web application.
 - [ ] Learn AWS so that it can be used to host the site.
 
-## Website Updates
+## Version History
 
 - **v1.0**: Initial launch of the website with basic features written in Javascript and HTML.
   - [Link to the Webpage](https://cecoulombe.github.io/FinanceTracker/tracker_HTML)
