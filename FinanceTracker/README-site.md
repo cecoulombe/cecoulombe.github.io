@@ -4,9 +4,40 @@ This README file is specifically for the Finance Trakcer website hosted through 
 
 ## Contents
 - [Current Version Instructions](#mInstructions)
+- [TODO List](##To-Do List for Website)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Instructions
-To access the [most up to date version](#mWebsite Update) of the webpage
+To access the most up to date version of the webpage
 
 ## To-Do List for Website
 
